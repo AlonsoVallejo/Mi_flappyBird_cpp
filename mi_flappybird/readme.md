@@ -28,7 +28,7 @@ To compile the game, follow these steps:
 3. Run the following command to compile the code:
 
     ```sh
-    g++ flappyBirdApp.cpp flappyBird.cpp -o flappyBird -lsfml-graphics -lsfml-window -lsfml-system
+    g++ flappy_Bird_App.cpp flappy_Bird.cpp -o flappy_Bird -lsfml-graphics -lsfml-window -lsfml-system
     ```
 
 ### Running the Game
