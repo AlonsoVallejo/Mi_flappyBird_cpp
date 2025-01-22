@@ -7,6 +7,7 @@
 #include <ctime>
 #include <cstdlib>
 
+using namespace std;
 using namespace sf;
 
 int main() {
@@ -21,7 +22,7 @@ int main() {
         !backgroundTexture.loadFromFile("flappybirdbg.png") || 
         !topPipeTexture.loadFromFile("toppipe.png") || 
         !bottomPipeTexture.loadFromFile("bottompipe.png")) {
-        std::cout << "Error loading textures!" << std::endl;
+        cout << "Error loading textures!" << endl;
         return -1;
     }
 
@@ -30,11 +31,11 @@ int main() {
     Sprite background(backgroundTexture);
     Font font;
     if (!font.loadFromFile("arial.ttf")) {
-        std::cout << "Error loading font!" << std::endl;
+        cout << "Error loading font!" << endl;
         return -1;
     }
 
-    std::vector<Pipe> pipes;
+    vector<Pipe> pipes;
     Clock clock;
     Time frameDuration = seconds(1.f / FRAME_RATE);
     Time lastUpdateTime = Time::Zero;
@@ -89,7 +90,7 @@ int main() {
                 }
 
                 // Remove pipes that have moved off screen
-                pipes.erase(std::remove_if(pipes.begin(), pipes.end(), [](const Pipe& pipe) {
+                pipes.erase(remove_if(pipes.begin(), pipes.end(), [](const Pipe& pipe) {
                     return pipe.topPipe.getPosition().x + PIPE_WIDTH < 0;
                 }), pipes.end());
 
@@ -118,7 +119,7 @@ int main() {
         // Draw score
         Text scoreText;
         scoreText.setFont(font);
-        scoreText.setString("Score: " + std::to_string(static_cast<int>(score)));
+        scoreText.setString("Score: " + to_string(static_cast<int>(score)));
         scoreText.setCharacterSize(24);
         scoreText.setFillColor(Color::White);
         window.draw(scoreText);
@@ -127,7 +128,7 @@ int main() {
         if (gameOver) {
             Text gameOverText;
             gameOverText.setFont(font);
-            gameOverText.setString("Game Over! Score: " + std::to_string(static_cast<int>(score)));
+            gameOverText.setString("Game Over! Score: " + to_string(static_cast<int>(score)));
             gameOverText.setCharacterSize(30);
             gameOverText.setFillColor(Color::Red);
             window.draw(gameOverText);
