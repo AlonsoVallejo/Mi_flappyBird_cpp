@@ -10,7 +10,8 @@
 using namespace std;
 using namespace sf;
 
-int main() {
+int main() 
+{
     srand(static_cast<unsigned>(time(NULL)));
 
     // Create the main window
